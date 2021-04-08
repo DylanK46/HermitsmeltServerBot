@@ -2,13 +2,14 @@
 from mcstatus import MinecraftServer
 from socket import gaierror
 import discord
+import os
 
 #Server to look up
-server = MinecraftServer.lookup("hermitsmelt.tk")
+server = MinecraftServer.lookup(os.environ['SERVERIP'])
 
 #Discord Configuration
-TOKEN = "ODI5Njk0NTY5ODUwOTk0Njk4.YG73SA.KvPn4qon6J1OoMR5PqZZiF7-5Ks"
-GUILD ="HermitSmelt"
+TOKEN = os.environ['DISCORDTOKEN']
+GUILD = os.environ['DISCORDGUILD']
 
 #Initiate the Discord client
 client = discord.Client()
@@ -28,7 +29,7 @@ async def on_message(message):
       return
 
     if message.content == '?map':
-      status = "Map link : http://hermitsmelt.tk:25570"
+      status = "Map link : "+os.environ['DYNMAP_URL',"ERROR:No Link Set"]
 
     if message.content == '?up':
       try:

@@ -1,0 +1,8 @@
+FROM python:3
+
+ADD main.py /
+
+RUN pip install mcstatus
+RUN pip install discord
+
+CMD [ "python", "main.py" ]
